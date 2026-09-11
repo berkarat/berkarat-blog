@@ -1,0 +1,12 @@
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: berkarat-blog:latest
+    container_name: berkarat-blog
+    restart: unless-stopped
+    ports:
+      # host:container -> reverse proxy'n (NPM/Traefik) bu porta yönlensin
+      # ya da domaini direkt bağlayacaksan "80:80" yap
+      - "8088:80"
